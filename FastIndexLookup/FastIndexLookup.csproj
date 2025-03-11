@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <AssemblyName>FastIndexLookup</AssemblyName>
+        <RootNamespace> FastIndexLookup
+XCM</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.13.0" />
+      <PackageReference Include="Microsoft.Orleans.Core" Version="9.1.2" />
+      <PackageReference Include="Microsoft.Orleans.Serialization" Version="9.1.2" />
+      <PackageReference Include="Microsoft.Orleans.TestingHost" Version="9.1.2" />
+      <PackageReference Include="xunit.assert" Version="2.9.3" />
+      <PackageReference Include="xunit.core" Version="2.9.3" />
+    </ItemGroup>
+
+</Project>
