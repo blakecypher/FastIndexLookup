@@ -1,31 +1,22 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿namespace IndexService;
 
-namespace IndexService;
-
-public class OrleansIndexService : Grain
+public class OrleansIndexService(IIndexBaseService serviceBase) : Grain, IOrleansIndexService
 {
-    private readonly IndexBaseService _serviceBase;
-
-    public OrleansIndexService(IndexBaseService serviceBase)
-    {
-        _serviceBase = serviceBase;
-    }
-
     public Task LoadIndexEntries(IEnumerable<IndexEntry> entries)
     {
-        _serviceBase.LoadIndexEntries(entries);
+        serviceBase.LoadIndexEntries(entries);
         return Task.CompletedTask;
     }
 
-    public Task<bool> TryGetValue(string key, [NotNullWhen(true)] out IndexEntry? result)
+    public Task<(bool Success, IndexEntry? Result)> TryGetValue(string key)
     {
-        var success = _serviceBase.TryGetValue(key, out result);
-        return Task.FromResult(success);
+        var success = serviceBase.TryGetValue(key, out var result);
+        return Task.FromResult((success, result));
     }
 
     public Task AddOrUpdate(IndexEntry entry)
     {
-        _serviceBase.Upsert(entry);
+        serviceBase.Upsert(entry);
         return Task.CompletedTask;
     }
 }

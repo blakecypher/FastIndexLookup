@@ -2,27 +2,20 @@
 
 namespace IndexService;
 
-public class IndexService
+public class IndexService(IIndexBaseService serviceBase) : IIndexService
 {
-    private readonly IndexBaseService _serviceBase;
-
-    public IndexService(IndexBaseService serviceBase)
-    {
-        _serviceBase = serviceBase;
-    }
-
     public void LoadIndexEntries(IEnumerable<IndexEntry> entries)
     {
-        _serviceBase.LoadIndexEntries(entries);
+        serviceBase.LoadIndexEntries(entries);
     }
 
     public bool TryGetValue(string key, [NotNullWhen(true)] out IndexEntry? result)
     {
-        return _serviceBase.TryGetValue(key, out result);
+        return serviceBase.TryGetValue(key, out result);
     }
 
     public void AddOrUpdate(IndexEntry entry)
     {
-        _serviceBase.Upsert(entry);
+        serviceBase.Upsert(entry);
     }
 }

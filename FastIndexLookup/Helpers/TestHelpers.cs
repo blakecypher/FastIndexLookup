@@ -1,4 +1,4 @@
-﻿namespace IndexService.Tests;
+﻿namespace IndexService;
 
 public static class TestHelpers
 {

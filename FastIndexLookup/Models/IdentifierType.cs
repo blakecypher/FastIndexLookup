@@ -1,3 +1,3 @@
 ﻿namespace IndexService;
 
-public enum IdentifierType { Type1, Type2, Type3 }
+public enum IdentifierType { Trainers, Tracksuits, TShirts }
